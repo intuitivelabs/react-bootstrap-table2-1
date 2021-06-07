@@ -27,7 +27,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: install npm
-      run: apt install npm
+      run: sudo apt install npm
     - name: checkout
       uses: actions/checkout@v2
     - name: build modules
