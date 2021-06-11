@@ -27,10 +27,15 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: install npm
-      run: apt install npm
+      run: sudo apt install npm
     - name: checkout
       uses: actions/checkout@v2
-    - name: build modules
+    - name: install node dependencies 
+      run: cd $GITHUB_WORKSPACE; npm install
+    - name: build local packages 
       run: cd $GITHUB_WORKSPACE; npm run build
-    - name: commit modules to the github repo
-      run: git commit -a -m "builds modules"; git push
+    - name: commit built version to the github repo
+      uses: EndBug/add-and-commit@v7
+      with:
+        add: '[ "packages/react-bootstrap-table2/lib", "packages/react-bootstrap-table2/dist", "packages/react-bootstrap-table2-editor/lib", "packages/react-bootstrap-table2-editor/dist", "packages/react-bootstrap-table2-overlay/lib", "packages/react-bootstrap-table2-overlay/dist", "packages/react-bootstrap-table2-paginator/lib", "packages/react-bootstrap-table2-paginator/dist", "packages/react-bootstrap-table2-toolkit/lib", "packages/react-bootstrap-table2-toolkit/dist", "packages/react-bootstrap-table2-filter/lib", "packages/react-bootstrap-table2-filter/dist" ]'
+        message: adds build files
