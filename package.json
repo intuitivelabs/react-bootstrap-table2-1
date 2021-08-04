@@ -70,7 +70,6 @@
         "jest": "20.0.4",
         "jsdom": "11.2.0",
         "jsdom-global": "3.0.2",
-        "lerna": "2.8.0",
         "node-sass": "4.12.0",
         "react-test-renderer": "16.0.0",
         "sass-loader": "6.0.6",
